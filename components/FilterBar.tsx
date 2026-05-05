@@ -106,8 +106,8 @@ export function FilterBar({
     filters.people.length;
 
   return (
-    <div className="sticky top-0 z-40 bg-background border-b">
-      <div className="space-y-4 p-4">
+    <div className="bg-background border-b">
+      <div className="space-y-2 p-3">
         {/* Financial Year Selector */}
         <div className="flex items-center gap-2">
           <label className="text-sm font-medium text-foreground min-w-fit">
@@ -131,7 +131,7 @@ export function FilterBar({
         </div>
 
         {/* Filter Pills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2">
           {/* Cluster Filter */}
           <FilterSelector
             label="Cluster"
@@ -172,8 +172,7 @@ export function FilterBar({
             onChange={(value) =>
               handleFilterChange({
                 ...filters,
-                people:
-                  value === "__ALL__" || !value ? [] : [value],
+                people: value === "__ALL__" || !value ? [] : [value],
               })
             }
           />
@@ -189,8 +188,8 @@ export function FilterBar({
 
         {/* Active Filters Display and Clear Button */}
         {activeFilterCount > 0 && (
-          <div className="flex items-center justify-between pt-2 border-t">
-            <div className="flex flex-wrap gap-2">
+          <div className="flex items-center justify-between pt-1 border-t">
+            <div className="flex flex-wrap gap-1">
               {[
                 ...filters.clusters,
                 ...filters.impactAreas,
@@ -202,7 +201,7 @@ export function FilterBar({
                 <Badge
                   key={filter}
                   variant="secondary"
-                  className="cursor-pointer hover:bg-secondary/80"
+                  className="cursor-pointer hover:bg-secondary/80 text-xs"
                 >
                   {filter}
                   <X className="ml-1 h-3 w-3" />
@@ -213,7 +212,7 @@ export function FilterBar({
               variant="outline"
               size="sm"
               onClick={clearAllFilters}
-              className="ml-2"
+              className="ml-2 h-7 text-xs"
             >
               Clear All
             </Button>
@@ -260,7 +259,7 @@ function FilterSelector({
 
   return (
     <Select open={undefined}>
-      <div className="space-y-2">
+      <div className="space-y-1">
         <div className="flex items-center justify-between">
           <label className="text-xs font-medium text-muted-foreground uppercase">
             {label}
@@ -274,7 +273,7 @@ function FilterSelector({
             </button>
           )}
         </div>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           {options.map((option) => (
             <button
               key={option}
@@ -312,14 +311,14 @@ function ResponsiblePersonDropdown({
   const normalizedOptions = options.filter((option) => option?.trim() !== "");
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1">
       <div className="flex items-center justify-between">
         <label className="text-xs font-medium text-muted-foreground uppercase">
           {label}
         </label>
       </div>
       <Select value={effectiveValue} onValueChange={onChange}>
-        <SelectTrigger className="w-40">
+        <SelectTrigger className="w-32 h-8">
           <SelectValue placeholder="All" />
         </SelectTrigger>
         <SelectContent>
